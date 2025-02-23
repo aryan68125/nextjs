@@ -66,3 +66,5 @@ This architecture introduces a new approach to creating React components by divi
 
 **NOTE:** React Hooks are functions that let you use React's state and lifecycle features in function components, instead of writing class components. Hooks make it easier to manage state, reuse logic, and write code. 
 ### Routing in nextJS
+- NextKs has a file-system based routing system
+- URls you can access in your browser are determined by how organized your files and folders are in your code.
