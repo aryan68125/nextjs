@@ -1,7 +1,8 @@
-export default function product_details({ params }: { params: { productid: BigInteger } }){
+export default async function product_details({ params }: { params: Promise<{ productid: bigint }>}){
+    const productid = (await params).productid
     return (
         <>
-        <h1>Details about product {params.productid}</h1>
+        <h1>Details about product {productid}</h1>
         </>
     )
 }

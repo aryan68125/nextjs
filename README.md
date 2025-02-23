@@ -127,12 +127,15 @@ This architecture introduces a new approach to creating React components by divi
 - ```routing-demo/src/app/product/[productid]/page.tsx``` when implementing dynamic routing the folder with square-brackets ```[]``` will serve as the dynamic route variable that will be passed in the url
 - This variable can be get in the page.tsx file present inside this ```[productid]``` folder like this 
     - ```
-        export default function product_details({ params }: { params: { productid: BigInteger } }){
+        export default async function product_details({ params }: { params: Promise<{ productid: bigint }>}){
+            const productid = (await params).productid
             return (
                 <>
-                <h1>Details about product {params.productid}</h1>
+                <h1>Details about product {productid}</h1>
                 </>
             )
         }
       ```
     - In real app you will have to fetch the product details using this productid from a back-end server In my case I am planning to use fast-api or django
+- Now every page in the app router recieves route parameters with the params prop. Lets destructure it as params.
+    - The type of params is a promise that resolves to an object containing the dynamic segments as key value pairs in my case ```{ params }: { params: { productid: BigInteger } }``` where ```productid``` is the name of the folder written in square brackets. 
