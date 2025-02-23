@@ -139,3 +139,32 @@ This architecture introduces a new approach to creating React components by divi
     - In real app you will have to fetch the product details using this productid from a back-end server In my case I am planning to use fast-api or django
 - Now every page in the app router recieves route parameters with the params prop. Lets destructure it as params.
     - The type of params is a promise that resolves to an object containing the dynamic segments as key value pairs in my case ```{ params }: { params: { productid: BigInteger } }``` where ```productid``` is the name of the folder written in square brackets. 
+
+**Nested Dynamic routes :**     
+**Consider senario 5 : Here we are showing product's detial in this route ```localhost:3000/product/1``` and we are showing review for product 1 like this ```localhost:3000/product/1/review/1```**
+- In this case we have to create a folder called product inside the app folder like this ```routing-demo/src/app/product``` 
+- Then we will have to create a folder with a name wrapped in a square bracket Remember that these type of folders are the folders which allow us to implement dynamic routing in nextjs ```routing-demo/src/app/product/[productid]```
+- Create a page.tsx file inside this folder ```routing-demo/src/app/product/[productid]/page.tsx```
+    - the code below will allow us to get the value passed in the url into our page.tsx file's function 
+        - ```
+            export default async function product_details({ params }: { params:    Promise<{ productid: bigint }>}){
+                const productid = (await params).productid
+                return (
+                    <>
+                    <h1>Details about product {productid}</h1>
+                    </>
+                )
+            }a
+        ```
+- Then create a folder inside ```[productid]``` folder called reviews and inside reviews you need to create another folder with a name reviewid wrapped in a square bracket it should look something like this ```routing-demo/src/app/product/[productid]/reviews/[reviewid]/page.tsx```
+    - ```
+        export default async function product_review({params} : {params : Promise<{productid : bigint,reviewid : bigint}>}){
+        const {productid, reviewid} = (await params) 
+            return (
+                <>
+                <h1>The review for product with a productid {productid} is as shown below</h1>
+                <h4>The current review is {reviewid}</h4>
+                </>
+            )
+        }
+      ```
