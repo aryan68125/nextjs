@@ -99,3 +99,26 @@ This architecture introduces a new approach to creating React components by divi
 - This allows you to import the profile function elsewhere in your application without needing to use curly braces. For example: 
 ```import Profile from './profile'; // Now 'Profile' can be used like a regular React component
 ```
+
+**Lets implement senario 3 : In this we need to create three additional routes 1 for ```localhost:3000/blog``` 1 for ```localhost:3000/blog/first``` and 1 for ```localhost:3000/blog/second```**
+- In this senario we trying to tackel nested routing 
+- All you need to do is create a blog folder inside the app directiory and then create a page.tsx file 
+    - write this code in that page.tsx file 
+    - ```
+            export default function blog(){
+            return <h1>this is the blog home page</h1>
+        }
+        ```
+- Then inside the blog folder you need to create two additional folder named first and second. Then add page.tsx inside each first and second folder and add the same code inside each of them with slight variations as shown below:
+    - for ```app/blog/first/page.tsx```
+        - ```
+              export default function blog(){
+            return <h1>this is the first blog page</h1>
+            }
+          ```
+    - for ```app/blog/second/page.tsx```
+        - ```
+              export default function blog(){
+            return <h1>this is the second blog page</h1>
+            }
+          ```
