@@ -68,3 +68,34 @@ This architecture introduces a new approach to creating React components by divi
 ### Routing in nextJS
 - NextKs has a file-system based routing system
 - URls you can access in your browser are determined by how organized your files and folders are in your code.
+- So does every folder in nextJs is converted into a url route in nextJs? The answer is no. 
+- NextJs is built around conventions and routing is one area where these conventions are particularly important
+    - There are three main conventions to remember.
+        - All routes must live inside the app folder
+        - Route files must be named either page.js or page.tsx
+        - Each folder represents a segment of the url path
+    - When these conventions are follwed the file automatically becomes available as a route. 
+- NextJs will automatically serve a 404 not found response page when someone tries to access the url that you have not created in the app you don't have to do anything in this case since nextJs has got you covered.
+- The beauty of this system is that you don't need to mess around with installing and configuring a router in your code your file and folder structure does all the heavy lifting.
+- This is a perfect example of nextJs's philosophy of favouring conventions over configuration when it comes to routing.
+    
+**Lets implement the senario 1 : Where user hits the url ```localhost:3000```** :       
+![alt text](README_images/routing/Screenshot_20250223_140334.png)
+- As you can see the output here is an html tag which comes from ```src/app/page.tsx```
+- With this we have completed the senario 1
+- The code related to this is present inside this directory ```routing-demo/src/app/page.tsx```
+
+**What is layout.tsx file** :       
+- Even though I have deleted this file when I have deleted the app folder from src directory. The nextJS will automatically create and set it up we first access the root route.
+- This file get created automatically behind the scene
+
+**Lets implement senario 2 : In this we need to create two additional route 1 for the about page ```localhost:3000/about``` and 1 for the profile page ```localhost:3000/profile``` page**
+- route : ```http://192.168.1.51:3000/profile```
+    ![alt text](README_images/routing/profile_route.png)
+- route : ```http://192.168.1.51:3000/about```
+    ![alt text](README_images/routing/root_route.png)
+**NOTE: What is export default**        
+- export default is used to export the profile function as the default export of this file.
+- This allows you to import the profile function elsewhere in your application without needing to use curly braces. For example: 
+```import Profile from './profile'; // Now 'Profile' can be used like a regular React component
+```
