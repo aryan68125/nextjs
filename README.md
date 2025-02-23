@@ -122,3 +122,5 @@ This architecture introduces a new approach to creating React components by divi
             return <h1>this is the second blog page</h1>
             }
           ```
+### Dynamic routing in NextJS
+**Lets implement senario 4 : when a user hits the url ```localhost:3000/products``` he should see products listing and when a user hots the url ```localhost:3000/products/id``` he should see the product's detials**      
