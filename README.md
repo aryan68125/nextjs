@@ -124,3 +124,15 @@ This architecture introduces a new approach to creating React components by divi
           ```
 ### Dynamic routing in NextJS
 **Lets implement senario 4 : when a user hits the url ```localhost:3000/products``` he should see products listing and when a user hots the url ```localhost:3000/products/id``` he should see the product's detials**      
+- ```routing-demo/src/app/product/[productid]/page.tsx``` when implementing dynamic routing the folder with square-brackets ```[]``` will serve as the dynamic route variable that will be passed in the url
+- This variable can be get in the page.tsx file present inside this ```[productid]``` folder like this 
+    - ```
+        export default function product_details({ params }: { params: { productid: BigInteger } }){
+            return (
+                <>
+                <h1>Details about product {params.productid}</h1>
+                </>
+            )
+        }
+      ```
+    - In real app you will have to fetch the product details using this productid from a back-end server In my case I am planning to use fast-api or django
