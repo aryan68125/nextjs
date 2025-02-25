@@ -168,3 +168,7 @@ This architecture introduces a new approach to creating React components by divi
             )
         }
       ```
+### Catch all segments
+To understand this consider the senario 6.      
+**Senario 6 : Ima gine we are creating a document for our site and each site has multiple features and each feature contains several concepts that need documentation The goal is to create a unique routes for each concepts under its respective feature**        
+Since next js uses file system routing that would mean we have to create 100 separate files in the project. But here is where the dynamic routing comes to the rescue. by using dynamic route folder by using concept_id you can cut that down to just 20 files
