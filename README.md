@@ -173,3 +173,52 @@ To understand this consider the senario 6.
 **Senario 6 : Ima gine we are creating a document for our site and each site has multiple features and each feature contains several concepts that need documentation The goal is to create a unique routes for each concepts under its respective feature**        
 Since next js uses file system routing that would mean we have to create 100 separate files in the project. But here is where the dynamic routing comes to the rescue. by using dynamic route folder by using concept_id you can cut that down to just 20 files. Similarly if we create a dynamic route folder for feature_id then we would be down to just 2 folders.      
 Everytime we add a new path segment to our url ```localhost:3000/docs/feature1/concept1/example1``` we need another level of nesting our routes folder, since every page in our documentation shares the same layout wouldn't it be grate if we could handle all these routes segments with just one file. That is exactly catch all segments lets us do.       
+#### Implementation : 
+- First create a folder named ```docs``` inside the ```app``` folder. 
+- Now create a dynamic folder which looks something like this ```[...slug]```
+- Inside of ```[...slug]``` folder you create a page.tsx file
+- And inside of that page.tsx file you write the code as shown below : 
+    - ```
+        export default function Docs(){
+            return (<>
+                <h1>Docs home page</h1>
+            </>)
+        }
+      ```
+- As a result you will see that any url after ```http://192.168.1.51:3000/docs/``` will be accepted and the page will shown as a result so your url may look something like this ```http://192.168.1.51:3000/docs/feature1/example12``` and it will work and your url may also look like this ```http://192.168.1.51:3000/docs/feature1``` which will also work.
+- In order to access different url segment in the code in page.tsx file.
+    - ```
+        export default async function Docs({params,} : {params: Promise<{slug:string[]}>}){
+        const {slug} = await params;
+            if (slug?.length === 2){
+                return (
+                    <>
+                    <h1>
+                        Viewing docs for {slug[0]} and {slug[1]}
+                    </h1>
+                    </>
+                )
+            }
+            else if(slug?.length === 1){
+                return (
+                    <>
+                    <h1>
+                        Viewing docs for {slug[0]}
+                    </h1>
+                    </>
+                )
+            }
+            else{
+                return (
+                    <>
+                    <h1>Docs home page</h1>
+                    </>
+                )
+            }
+        }
+        ```
+    - The ```?.``` operator is called "optional chaining." It allows you to safely access properties of an object (or call methods) even if that object is null or undefined.
+    In this case, slug?.length means:
+    If slug is not null or undefined, it will access the length property of the slug array (or string).
+    If slug is null or undefined, the expression will short-circuit and return undefined rather than throwing an error.
+    - Here ```slug:string[]``` is an array of strings which gives us the liberty to handle the params however we see fit.
