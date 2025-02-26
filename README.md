@@ -223,5 +223,8 @@ Everytime we add a new path segment to our url ```localhost:3000/docs/feature1/c
     If slug is null or undefined, the expression will short-circuit and return undefined rather than throwing an error.
     - Here ```slug:string[]``` is an array of strings which gives us the liberty to handle the params however we see fit.
 - Right now if you go to this url ```http://192.168.1.51:3000/docs/``` you will see a 404 error. Which means the slug segments in your url is not optional and mandatory
-- There is a way to make your slug segments in the url optional all you have to do is change your dynamic folder name from ```[...slug]``` to ```[[...slug]]``` and now the url ```http://192.168.1.51:3000/docs/``` will work as well triggering code written in the else block in the code as shown above
-  
+- There is a way to make your slug segments in the url optional all you have to do is change your dynamic folder name from ```[...slug]``` to ```[[...slug]]``` and now the url ```http://192.168.1.51:3000/docs/``` will work as well triggering code written in the else block in the code as shown above  
+   
+**What is a slug?** In Django, a slug is a short, URL-friendly version of a string, typically used to create readable and SEO-friendly URLs. It is often used for titles, names, or other text that should appear in URLs.
+
+For example, if you have a blog post titled "My First Blog Post!", the slug might be "my-first-blog-post", which is clean, readable, and easier to handle in URLs than the original title.      
