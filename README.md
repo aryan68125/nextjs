@@ -1,4 +1,21 @@
 # NextJS learning content
+# Summary : 
+- Installation process
+- TO run your nextJs project
+- Project's folder structure
+- Lets implement senario 2 : In this we need to create two additional route 1 for the about page ```localhost:3000/about``` and 1 for the profile page ```localhost:3000/profile``` page
+- What is export default
+- Lets implement senario 3 : In this we need to create three additional routes 1 for ```localhost:3000/blog``` 1 for ```localhost:3000/blog/first``` and 1 for ```localhost:3000/blog/second```
+- Lets implement senario 4 : when a user hits the url ```localhost:3000/products``` he should see products listing and when a user hots the url ```localhost:3000/products/id``` he should see the product's detials
+- Nested Dynamic routes
+    - Consider senario 5 : Here we are showing product's detial in this route ```localhost:3000/product/1``` and we are showing review for product 1 like this ```localhost:3000/product/1/review/1
+- Catch all segments
+    - The ```?.``` operator is called "optional chaining.
+    - What is a slug?
+- Not found page
+    - Show not found page programatically
+        - The notFound() Function (from next/navigation)
+
 ## Installation process
 - Install npm using this command ```sudo apt-get install npm```
 - To install nextJS you need to run this command ```npx create-next-app@latest```
@@ -170,7 +187,7 @@ This architecture introduces a new approach to creating React components by divi
       ```
 ### Catch all segments
 To understand this consider the senario 6.      
-**Senario 6 : Ima gine we are creating a document for our site and each site has multiple features and each feature contains several concepts that need documentation The goal is to create a unique routes for each concepts under its respective feature**        
+**Senario 6 : Imagine we are creating a document for our site and each site has multiple features and each feature contains several concepts that need documentation The goal is to create a unique routes for each concepts under its respective feature**        
 Since next js uses file system routing that would mean we have to create 100 separate files in the project. But here is where the dynamic routing comes to the rescue. by using dynamic route folder by using concept_id you can cut that down to just 20 files. Similarly if we create a dynamic route folder for feature_id then we would be down to just 2 folders.      
 Everytime we add a new path segment to our url ```localhost:3000/docs/feature1/concept1/example1``` we need another level of nesting our routes folder, since every page in our documentation shares the same layout wouldn't it be grate if we could handle all these routes segments with just one file. That is exactly catch all segments lets us do.       
 #### Implementation : 
@@ -247,3 +264,39 @@ You can do it simply by creating a file called ```not-found.tsx``` or ```not-fou
         }
       ```
     - You can use this custom 404 page to match your websites theme and branding and make your website a bit more cohcohesive and complete.
+- While this ```not-found.tsx``` page works automatically with nextjs file based routing you can also trigger it programmatically using the not-found function.     
+
+**Show not found page programatically** : 
+Lets say we are building a product review system. Where we will never have more than 1000 reviews and we want to show a 404 page for any review id above 1000. You can also create specific 404 page for different sections of your application.
+- ```
+    import { notFound } from "next/navigation"
+
+    export default async function product_review({params} : {params : Promise<{productid : bigint,reviewid : bigint}>}){
+        const {productid, reviewid} = (await params) 
+        if(reviewid>1000){
+            notFound();
+        }
+        return (
+            <>
+            <h1>The review for product with a productid {productid} is as shown below</h1>
+            <h4>The current review is {reviewid}</h4>
+            </>
+        )
+    }
+  ```
+    - ```import { notFound } from "next/navigation";``` 
+        - This line imports the notFound function from the next/navigation module.
+        - The notFound function is used for handling routing and rendering a 404 Not Found error page in Next.js.
+    - ```export default async function product_review({params} : {params : Promise<{productid : bigint, reviewid : bigint}>}) {```
+        - This is an asynchronous function component that handles a specific route in your application. The function accepts an object with a params property that is a Promise.
+        - The params object is expected to contain two parameters: productid (of type bigint) and reviewid (also bigint).
+        - In Next.js, this could correspond to a dynamic route, where productid and reviewid are values extracted from the URL.
+    - ```const {productid, reviewid} = (await params); ```
+        - Since params is a Promise, the code uses await to resolve the promise and extract the values of productid and reviewid.
+        - The params object contains the productid and reviewid, and the destructuring syntax is used to assign them to variables.
+    - **The notFound() Function (from next/navigation):** 
+        - notFound() is a built-in function in Next.js that is used for handling routing and rendering a 404 error page.
+        - Purpose: It triggers a 404 error in the application, meaning the page you’re trying to load doesn't exist or isn't available for the given conditions.
+        - When you call notFound(), it instructs Next.js to stop rendering the current page and show a standard 404 error page.
+
+- ![alt text](README_images/routing/404_page_activate_programatically.png)
