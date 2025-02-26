@@ -15,7 +15,7 @@
 - Not found page
     - Show not found page programatically
         - The notFound() Function (from next/navigation)
-
+    - You can also create specific 404 page for different sections of your application.
 ## Installation process
 - Install npm using this command ```sudo apt-get install npm```
 - To install nextJS you need to run this command ```npx create-next-app@latest```
@@ -267,7 +267,7 @@ You can do it simply by creating a file called ```not-found.tsx``` or ```not-fou
 - While this ```not-found.tsx``` page works automatically with nextjs file based routing you can also trigger it programmatically using the not-found function.     
 
 **Show not found page programatically** : 
-Lets say we are building a product review system. Where we will never have more than 1000 reviews and we want to show a 404 page for any review id above 1000. You can also create specific 404 page for different sections of your application.
+Lets say we are building a product review system. Where we will never have more than 1000 reviews and we want to show a 404 page for any review id above 1000. 
 - ```
     import { notFound } from "next/navigation"
 
@@ -298,6 +298,18 @@ Lets say we are building a product review system. Where we will never have more 
         - notFound() is a built-in function in Next.js that is used for handling routing and rendering a 404 error page.
         - Purpose: It triggers a 404 error in the application, meaning the page you’re trying to load doesn't exist or isn't available for the given conditions.
         - When you call notFound(), it instructs Next.js to stop rendering the current page and show a standard 404 error page.
-
 - ![alt text](README_images/routing/404_page_activate_programatically.png)
     - The moment the reviewid more than 1000 was inserted in the url nextjs showed 404 page that we created.
+- **You can also create specific 404 page for different sections of your application.**
+    - All you need to do is create a ```not-found.tsx``` file in this directory ```routing-demo/src/app/product/[productid]/reviews/[reviewid]/not-found.tsx```
+    - You can change the message that you want to display to your linking here I have changed the message from my default 404 page as shown below.      
+        ```
+            export default async function NotFound(){
+                return (
+                    <div className="flex flex-col items-center jutify-around">
+                        <h1>Review not found!</h1>
+                    </div>
+                )
+            }
+        ```     
+    - ![alt text](README_images/routing/custom_404_page_just_for_reviews.png)
