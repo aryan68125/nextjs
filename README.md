@@ -300,3 +300,4 @@ Lets say we are building a product review system. Where we will never have more 
         - When you call notFound(), it instructs Next.js to stop rendering the current page and show a standard 404 error page.
 
 - ![alt text](README_images/routing/404_page_activate_programatically.png)
+    - The moment the reviewid more than 1000 was inserted in the url nextjs showed 404 page that we created.
