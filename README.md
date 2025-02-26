@@ -224,7 +224,26 @@ Everytime we add a new path segment to our url ```localhost:3000/docs/feature1/c
     - Here ```slug:string[]``` is an array of strings which gives us the liberty to handle the params however we see fit.
 - Right now if you go to this url ```http://192.168.1.51:3000/docs/``` you will see a 404 error. Which means the slug segments in your url is not optional and mandatory
 - There is a way to make your slug segments in the url optional all you have to do is change your dynamic folder name from ```[...slug]``` to ```[[...slug]]``` and now the url ```http://192.168.1.51:3000/docs/``` will work as well triggering code written in the else block in the code as shown above  
-   
+
 **What is a slug?** In Django, a slug is a short, URL-friendly version of a string, typically used to create readable and SEO-friendly URLs. It is often used for titles, names, or other text that should appear in URLs.
 
 For example, if you have a blog post titled "My First Blog Post!", the slug might be "my-first-blog-post", which is clean, readable, and easier to handle in URLs than the original title.      
+
+### Not found page
+Lets explore how to create a custom 404 page using an app router. By defualt if you visit a route that doesn't exist in your app folder you will see a basic 404 page. For development this default 404 page is good but for production you may want a custom 404 page that you want to show the users if they visit a route thats not there.       
+You can do it simply by creating a file called ```not-found.tsx``` or ```not-found.js``` in your ```app``` folder.      
+**Remember :** The file name should be exactly ```not-found.tsx``` or ```not-found.js``` in the app folder otherwise it will not work.      
+#### Implementation
+- Create a file named ```not-found.tsx``` in this directory ```routing-demo/src/app/not-found.tsx```.
+- Then inside this file write this code as shown below:
+    - ```
+        export default async function NotFound(){
+            return (
+                <div className="flex flex-col items-center jutify-around">
+                    <h1>Page not found!</h1>
+                    <p>Could not find the requested resource</p>
+                </div>
+            )
+        }
+      ```
+    - You can use this custom 404 page to match your websites theme and branding and make your website a bit more cohcohesive and complete.
