@@ -307,7 +307,7 @@ Lets say we are building a product review system. Where we will never have more 
             export default async function NotFound(){
                 return (
                     <div className="flex flex-col items-center jutify-around">
-                        <h1>Review not found!</h1>
+                        <h1>Review not found!</h1> 
                     </div>
                 )
             }
