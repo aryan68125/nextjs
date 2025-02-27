@@ -17,6 +17,7 @@
         - The notFound() Function (from next/navigation)
     - You can also create specific 404 page for different sections of your application.
     - path name Hook from nextJs
+- File co-location
 ## Installation process
 - Install npm using this command ```sudo apt-get install npm```
 - To install nextJS you need to run this command ```npx create-next-app@latest```
@@ -83,7 +84,8 @@ This architecture introduces a new approach to creating React components by divi
     - Think of client components as traditional react components you are already familiar with.
 
 **NOTE:** React Hooks are functions that let you use React's state and lifecycle features in function components, instead of writing class components. Hooks make it easier to manage state, reuse logic, and write code. 
-### Routing in nextJS
+
+## Routing in nextJS
 - NextKs has a file-system based routing system
 - URls you can access in your browser are determined by how organized your files and folders are in your code.
 - So does every folder in nextJs is converted into a url route in nextJs? The answer is no. 
@@ -335,3 +337,36 @@ Lets say we are building a product review system. Where we will never have more 
             }
             ```
         - ![alt text](README_images/routing/pathname_hook.png)
+### File co-location
+NextJs uses a file system based router. Each folder represents a route segment that maps to a url path but here is the important part a route only becomes publically accessible when you add a page.tsx or a page.js file to it.
+Demo : ```routing-demo/src/app/dashboard/line-chart.tsx``` 
+```
+export default async function LineChart(){
+    return (
+        <h1>Line chart</h1>
+    )
+}
+```
+As you can see below the page is not found:    
+![alt text](README_images/routing/line_charts.png)  
+- Even if you add ```line-chart.tsx``` file to the dasboard directory ```routing-demo/src/app/dashboard/``` nextJs will not make the path publically accessible until it finds ```page.tsx``` file in the directory.        
+Now lets create a ```page.tsx``` file in this directory ```routing-demo/src/app/dashboard/```
+```
+export default function Dashboard(){
+    return (
+        <h1>This is a dashboard page</h1>
+    )
+}
+```     
+The directory now looks something like this:
+```
+dashboard
+├── line-chart.tsx
+└── page.tsx
+```
+Now the output that you see below comes from ```page.tsx``` file and not ```line-chart.tsx``` file
+![alt text](README_images/routing/dashboard_line_chart.png)     
+- Even if the route is public with a ```page.tsx``` file. The browser only gets what is returned by ```page.tsx``` and it has to be a default exported react component.     
+You can safely co-locate project files inside route segments in the app directory without worring about them accidently becoming a route themselves.        
+You can keep your files in the app directory but you don't have to. Its preferred to keep the files outside the app directory in the ```src/components``` folder for all their UI components.
+### Private folders
