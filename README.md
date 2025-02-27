@@ -16,6 +16,7 @@
     - Show not found page programatically
         - The notFound() Function (from next/navigation)
     - You can also create specific 404 page for different sections of your application.
+    - path name Hook from nextJs
 ## Installation process
 - Install npm using this command ```sudo apt-get install npm```
 - To install nextJS you need to run this command ```npx create-next-app@latest```
@@ -313,5 +314,7 @@ Lets say we are building a product review system. Where we will never have more 
                 )
             }
         ```     
+    - The not found component ```NotFound()``` does not accept any props. 
+    - If not found component does not accept any props then how will I show different types of messages based on route parameters. For that we will use **path name Hook from nextJs**
+        - **NOTE :** ```const pathname = usePathname();``` This usePathname hook is a react component and will only work on client side components in nextJs. In nextJs whenever you create a new component its a server side component by default in order to create a client side component you will have to use ```"use client"``` specifically at the starting of your component to tell nextJs that the component is a client side component.
     - ![alt text](README_images/routing/custom_404_page_just_for_reviews.png)
-        - 
