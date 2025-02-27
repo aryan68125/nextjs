@@ -315,6 +315,22 @@ Lets say we are building a product review system. Where we will never have more 
             }
         ```     
     - The not found component ```NotFound()``` does not accept any props. 
-    - If not found component does not accept any props then how will I show different types of messages based on route parameters. For that we will use **path name Hook from nextJs**
+    - If not found component does not accept any props then how will I show different types of messages based on route parameters. For that we will use **pathname Hook from nextJs**
         - **NOTE :** ```const pathname = usePathname();``` This usePathname hook is a react component and will only work on client side components in nextJs. In nextJs whenever you create a new component its a server side component by default in order to create a client side component you will have to use ```"use client"``` specifically at the starting of your component to tell nextJs that the component is a client side component.
+            ```
+            "use client"
+            import { usePathname } from "next/navigation"
+            export default function NotFound(){
+                const pathname = usePathname();
+                //access pathname constant and extract the path paraeters from it
+                const productId = pathname.split("/")[2]
+                const reviewId = pathname.split("/")[4]
+                return (
+                    <div className="flex flex-col items-center jutify-around">
+                        <h1>Review not found!</h1>
+                        <p>reviewId {reviewId} for productId {productId} not found!</p>
+                    </div>
+                )
+            }
+            ```
     - ![alt text](README_images/routing/custom_404_page_just_for_reviews.png)
