@@ -301,6 +301,7 @@ Lets say we are building a product review system. Where we will never have more 
 - ![alt text](README_images/routing/404_page_activate_programatically.png)
     - The moment the reviewid more than 1000 was inserted in the url nextjs showed 404 page that we created.
 - **You can also create specific 404 page for different sections of your application.**
+    - This allows developers to show more speciic messages for a specific section of your application.
     - All you need to do is create a ```not-found.tsx``` file in this directory ```routing-demo/src/app/product/[productid]/reviews/[reviewid]/not-found.tsx```
     - You can change the message that you want to display to your linking here I have changed the message from my default 404 page as shown below.      
         ```
@@ -313,3 +314,4 @@ Lets say we are building a product review system. Where we will never have more 
             }
         ```     
     - ![alt text](README_images/routing/custom_404_page_just_for_reviews.png)
+        - 
