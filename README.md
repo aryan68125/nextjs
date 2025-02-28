@@ -19,6 +19,8 @@
     - path name Hook from nextJs
 - File co-location
 - Private folders 
+    - If you actually want to use an underscore in your url
+- Route groups
 ## Installation process
 - Install npm using this command ```sudo apt-get install npm```
 - To install nextJS you need to run this command ```npx create-next-app@latest```
@@ -373,4 +375,13 @@ You can keep your files in the app directory but you don't have to. Its preferre
 ### Private folders 
 Private folders are used to keep the files that are used internally and are not publically available to others. Hence these files are not included in the routing system.       
 The private folder and all its sub-folders are excluded from routing. **To add a private folder just add an underscore before the name of the folder**.     
-Even if you create a page.ts file inside a private folder nextJs won't create a route for it because the underscore used in front of that folder's name signifies that the folder is a private folder.
+Even if you create a page.ts file inside a private folder nextJs won't create a route for it because the underscore used in front of that folder's name signifies that the folder is a private folder.      
+Benefits of private folder:
+- Helps you keep your UI logic separate from routing logic.
+- Having a consitent way to organize internal fiels in your project.
+- Making it easier to group related fiels in your code editor.
+- Avoiding potential naming conflicts with future nextJs file naming conventions.       
+
+**NOTE:** If you actually want to use an underscore in your url then use "%5F" instead. That's just the URL-encoded version of an underscore.
+### Route groups
+This lets us logically organize our routes and project files without impacting the URL structure.
