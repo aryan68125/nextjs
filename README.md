@@ -430,4 +430,9 @@ app
 └── register
     └── page.tsx
 ```
-Focus on routes login , register and forgot-password all our authentication routes are scattered across the app folder which is not ideal.
+Focus on routes login , register and forgot-password all our authentication routes are scattered across the app folder which is not ideal.      
+Lets group the related routes togeather, we can do this by creating an auth folder and moving all the respective folders for login , register and forgot-password inside the auth folder but now the routes ```http://192.168.1.51:3000/forgot-password``` that was working earlier is now broken and shows us page not found.      
+![alt text](README_images/routing/route_groups.png)     
+This is because nextJs automatically maps the nested folders to url paths. so we have ```auth/register```, ```auth/login``` and ```auth/forgot-password```.     
+To create a route group all we have to do is wrap the folder name in paranthesis like this ```(auth)```. This tells nextJs to treat this folder as an organizational tool and not to map it into our url paths. So as you can see in the image below the 404 page is not gone and we can see the forgot-password page again.
+![alt text](README_images/routing/route_groups2.png)
