@@ -384,4 +384,8 @@ Benefits of private folder:
 
 **NOTE:** If you actually want to use an underscore in your url then use "%5F" instead. That's just the URL-encoded version of an underscore.
 ### Route groups
-This lets us logically organize our routes and project files without impacting the URL structure.
+This lets us logically organize our routes and project files without impacting the URL structure. Route groups are the only way to share a layout between routes without affecting the url.     
+Let's implement authentication routes:
+- Register
+- Login
+- Forgot Password
