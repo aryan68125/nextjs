@@ -372,4 +372,5 @@ You can safely co-locate project files inside route segments in the app director
 You can keep your files in the app directory but you don't have to. Its preferred to keep the files outside the app directory in the ```src/components``` folder for all their UI components.
 ### Private folders 
 Private folders are used to keep the files that are used internally and are not publically available to others. Hence these files are not included in the routing system.       
-The private folder and all its sub-folders are excluded from routing. **To add a private folder just add an underscore before the name of the folder**.
+The private folder and all its sub-folders are excluded from routing. **To add a private folder just add an underscore before the name of the folder**.     
+Even if you create a page.ts file inside a private folder nextJs won't create a route for it because the underscore used in front of that folder's name signifies that the folder is a private folder.
