@@ -370,3 +370,4 @@ Now the output that you see below comes from ```page.tsx``` file and not ```line
 You can safely co-locate project files inside route segments in the app directory without worring about them accidently becoming a route themselves.        
 You can keep your files in the app directory but you don't have to. Its preferred to keep the files outside the app directory in the ```src/components``` folder for all their UI components.
 ### Private folders 
+Private folders are used to keep the files that are used internally and are not publically available to others. Hence these files are not included in the routing system.
