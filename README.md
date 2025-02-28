@@ -375,7 +375,7 @@ You can keep your files in the app directory but you don't have to. Its preferre
 ### Private folders 
 Private folders are used to keep the files that are used internally and are not publically available to others. Hence these files are not included in the routing system.       
 The private folder and all its sub-folders are excluded from routing. **To add a private folder just add an underscore before the name of the folder**.     
-Even if you create a page.ts file inside a private folder nextJs won't create a route for it because the underscore used in front of that folder's name signifies that the folder is a private folder.      
+Even if you create a ```page.tsx``` file inside a private folder nextJs won't create a route for it because the underscore used in front of that folder's name signifies that the folder is a private folder.      
 Benefits of private folder:
 - Helps you keep your UI logic separate from routing logic.
 - Having a consitent way to organize internal fiels in your project.
@@ -388,4 +388,46 @@ This lets us logically organize our routes and project files without impacting t
 Let's implement authentication routes:
 - Register
 - Login
-- Forgot Password
+- Forgot Password       
+
+As you can see our folder structure now looks something like this :
+```
+app
+├── about
+│   └── page.tsx
+├── blog
+│   ├── first
+│   │   └── page.tsx
+│   ├── page.tsx
+│   └── second
+│       └── page.tsx
+├── dashboard
+│   ├── line-chart.tsx
+│   └── page.tsx
+├── docs
+│   └── [[...slug]]
+│       └── page.tsx
+├── forgot-password
+│   └── page.tsx
+├── layout.tsx
+├── _lib
+│   └── format-date.ts
+├── login
+│   └── page.tsx
+├── not-found.tsx
+├── page.tsx
+├── product
+│   ├── page.tsx
+│   └── [productid]
+│       ├── page.tsx
+│       └── reviews
+│           ├── page.tsx
+│           └── [reviewid]
+│               ├── not-found.tsx
+│               └── page.tsx
+├── profile
+│   └── page.tsx
+└── register
+    └── page.tsx
+```
+Focus on routes login , register and forgot-password all our authentication routes are scattered across the app folder which is not ideal.
