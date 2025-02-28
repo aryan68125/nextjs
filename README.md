@@ -18,6 +18,7 @@
     - You can also create specific 404 page for different sections of your application.
     - path name Hook from nextJs
 - File co-location
+- Private folders 
 ## Installation process
 - Install npm using this command ```sudo apt-get install npm```
 - To install nextJS you need to run this command ```npx create-next-app@latest```
@@ -370,4 +371,5 @@ Now the output that you see below comes from ```page.tsx``` file and not ```line
 You can safely co-locate project files inside route segments in the app directory without worring about them accidently becoming a route themselves.        
 You can keep your files in the app directory but you don't have to. Its preferred to keep the files outside the app directory in the ```src/components``` folder for all their UI components.
 ### Private folders 
-Private folders are used to keep the files that are used internally and are not publically available to others. Hence these files are not included in the routing system.
+Private folders are used to keep the files that are used internally and are not publically available to others. Hence these files are not included in the routing system.       
+The private folder and all its sub-folders are excluded from routing. **To add a private folder just add an underscore before the name of the folder**.
