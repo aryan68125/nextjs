@@ -438,3 +438,7 @@ To create a route group all we have to do is wrap the folder name in paranthesis
 ![alt text](README_images/routing/route_groups2.png) 
 ## Layout 
 A layout is a UI that is shared between multiple pages in your application. Think of it as a consistent structure like header and footer that appear in every page. 
+### How to create a layout?
+- default export a react component from a layout.tsx file.
+- That component takes a children prop, which Nextjs will populate with your page content.
+- NextJs provides the layout by default.  In your app folder nextJs provides the layout file by default.
