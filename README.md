@@ -436,3 +436,5 @@ Lets group the related routes togeather, we can do this by creating an auth fold
 This is because nextJs automatically maps the nested folders to url paths. so we have ```auth/register```, ```auth/login``` and ```auth/forgot-password```.     
 To create a route group all we have to do is wrap the folder name in paranthesis like this ```(auth)```. This tells nextJs to treat this folder as an organizational tool and not to map it into our url paths. So as you can see in the image below the 404 page is not gone and we can see the forgot-password page again.
 ![alt text](README_images/routing/route_groups2.png) 
+## Layout 
+A layout is a UI that is shared between multiple pages in your application. Think of it as a consistent structure like header and footer that appear in every page. 
